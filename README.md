@@ -1,34 +1,27 @@
-# 비앤비 스터디 홈페이지 만들기 강의  (todo-app)
+# Quasar App (todo-app)
 
-## Backend/.env
+## 룸 역활 필드
 
-```text
-PORT=
-DB_HOST=
-DB_PORT=
-DB_USER=
-DB_PASS=
-DB_DATABASE=
-SECRET_KEY=
-```
-
-## DB 생성
-
-```bash
-docker run --name bnbdb -v C:/Data/Project/BnB/docker_data/db:/var/lib/mysql -v C:/Data/Project/BnB/docker_data/conf:/etc/mysql/conf.d -p 3308:3306 -e MARIADB_ROOT_PASSWORD=1234  -d mariadb:latest
-```
-
-## my.cnf
+chatUsers 에
+role 필드 구성
 
 ```text
-[client]
-default-character-set=utf8
-
-[mysql]
-default-character-set=utf8
-
-[mysqld]
-collation-server = utf8_unicode_ci
-init-connect='SET NAMES utf8'
-character-set-server = utf8
+[
+  'Master',
+  'Manager',
+  'User',
+  'Block'
+]
 ```
+
+마스터가 매니저를 뽑아
+매니저는 일반 사용자의 블럭/논블럭 권한
+마스터가 방을 나가려면 매니저 중에 한 명에게 마스터 권한을 넘기고
+매니저가 없는 방은 방을 폭파시킨다.
+
+status : BOOLEAN
+true : 룸에 조인한 상태 / 가능 상태 기본값
+false : 룸에서 나간 상태
+
+rooms 에 비번 생성할때
+개설자의 salt값을 => 새로운 salt값을 만들고 저장 하는 salt 필드 추가
