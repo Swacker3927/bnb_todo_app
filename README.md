@@ -1,7 +1,8 @@
 # 비앤비 스터디 홈페이지 만들기 강의  (todo-app)
 
 ## Backend/.env
-```
+
+```text
 PORT=
 DB_HOST=
 DB_PORT=
@@ -12,12 +13,14 @@ SECRET_KEY=
 ```
 
 ## DB 생성
-```
+
+```bash
 docker run --name bnbdb -v C:/Data/Project/BnB/docker_data/db:/var/lib/mysql -v C:/Data/Project/BnB/docker_data/conf:/etc/mysql/conf.d -p 3308:3306 -e MARIADB_ROOT_PASSWORD=1234  -d mariadb:latest
 ```
 
 ## my.cnf
-```
+
+```text
 [client]
 default-character-set=utf8
 
