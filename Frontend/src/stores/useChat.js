@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import useUser from 'stores/useUser';
-import { Notify } from 'quasar'
+import { Notify } from 'quasar';
 
 export default defineStore('useChat', {
   state: () => ({
@@ -70,14 +70,14 @@ export default defineStore('useChat', {
           user.role = role;
           const userStore = useUser();
           if (userStore.user.id == user.userId) {
-            if (role == 'Block') { // 차단이니깐 방목에서 방 목록 자체 업어야되요
+            if (role == 'Block') { // 차단이니깐 방목에서 방 목록 자체 없어야 되요.
               this.roomLeave(room.id);
               if (userStore.user.id == user.userId) {
-                Notify.create({ type: 'negative', message: `${room.name} 방에서 추방되었습니다.` })
+                Notify.create({ type: 'negative', message: `${room.name} 방에서 추방되었습니다.` });
               }
             } else {
               if (userStore.user.id == user.userId) {
-                Notify.create({ type: 'info', message: `${room.name} 방의 역활이 ${role}로 변경되었습니다.` })
+                Notify.create({ type: 'info', message: `${room.name} 방의 역활이 ${role}로 변경되었습니다.` });
               }
             }
           }

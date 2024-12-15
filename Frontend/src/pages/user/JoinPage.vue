@@ -145,7 +145,6 @@ export default defineComponent({
       }
     },
     pwRegex(v) {
-      // return true;
       const regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])\S{7,}$/;
       return (
         regex.test(v) ||

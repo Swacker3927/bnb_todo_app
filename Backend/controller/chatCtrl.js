@@ -1,24 +1,24 @@
 const pwLib = require('../lib/pwLib');
-const { Op, literal, where } = require('sequelize');
+const { Op, literal } = require('sequelize');
 const getOffsetAndLimit = require('../lib/getOffsetAndLimit');
 const fs = require('fs');
 
 const createRoom = async (form, user) => {
 
 	/*
-	name : 클라이언트 <
-	desc : "" < 
-	password : 있으면 암호화 <
-	salt : 암호화 하려면 생성
-	category : 클라 <
-	used : 기본 true,
-	userId : 개설자 // 마스터로 유지 하자
+		name : 클라이언트 <
+		desc : "" < 
+		password : 있으면 암호화 <
+		salt : 암호화 하려면 생성
+		category : 클라 <
+		used : 기본 true,
+		userId : 개설자 // 마스터로 유지 하자
 	*/
 
 	const payload = {
 		...form,
 		userId: user.id
-	}
+	};
 
 
 	if (form.password) {
@@ -36,12 +36,12 @@ const createRoom = async (form, user) => {
 	});
 
 	return room.id;
-}
+};
 
-const getRoom = async (roomId, user) => {
-	const room = await $DB.rooms.findByPk(roomId)
+const getRoom = async (roomId) => {
+	const room = await $DB.rooms.findByPk(roomId);
 	return room;
-}
+};
 
 const roomList = async (user, query) => {
 
@@ -56,7 +56,7 @@ const roomList = async (user, query) => {
 		id: {
 			[Op.notIn]: literal(`(SELECT roomId FROM chatUsers WHERE userId='${user.id}')`)
 		}
-	}
+	};
 	if (search) { //검색어가 있으면
 		where[Op.or] = [
 			{ name: { [Op.like]: `%${search}%` } },
@@ -64,7 +64,7 @@ const roomList = async (user, query) => {
 			{ category: { [Op.like]: `%${search}%` } },
 			{ userName: { [Op.like]: `%${search}%` } },
 			{ nickName: { [Op.like]: `%${search}%` } },
-		]
+		];
 	}
 
 	const data = await $DB.roomListView.findAndCountAll({
@@ -73,10 +73,10 @@ const roomList = async (user, query) => {
 		order: [
 			[sortBy, descending ? 'ASC' : 'DESC']
 		]
-	})
+	});
 
 	return data;
-}
+};
 
 const createUser = async (user, roomId) => {
 
@@ -88,7 +88,7 @@ const createUser = async (user, roomId) => {
 		userId: user.id
 	});
 	return data;
-}
+};
 
 const getRoomMessages = async (roomId, offset, limit) => {
 	const data = await $DB.chatMessages.findAndCountAll(
@@ -98,14 +98,14 @@ const getRoomMessages = async (roomId, offset, limit) => {
 			limit,
 			order: [['createdAt', 'DESC']]
 		}
-	)
+	);
 	return data;
-}
+};
 
 const fileUpload = async (file) => {
 	const uploadPath = $UPLOAD_PATH + '/chat';
 	if (!fs.existsSync(uploadPath)) { // 업로드 폴더가 없으면 생성함
-		fs.mkdirSync(uploadPath, { recursive: true })
+		fs.mkdirSync(uploadPath, { recursive: true });
 	}
 
 	// 확장자
@@ -121,7 +121,7 @@ const fileUpload = async (file) => {
 	// filepath tmp에 저장된 파일 위치
 	// newFilename 이 이름으로 저장할껀데 확장자 추가하자!
 	// originalFilename 실제 이름인데 요기서 확장자 가져오자
-}
+};
 
 const roomAuth = async (roomId, password) => {
 	const room = await $DB.rooms.findByPk(roomId, {
@@ -130,22 +130,22 @@ const roomAuth = async (roomId, password) => {
 
 	const verify = pwLib.verifyPassword(password, room.salt, room.password);
 	return verify;
-}
+};
 
-const chagePassword = async (roomId, text) => {
-	//TODO: ctx.user.id == chatUser.userId role확인
+const changePassword = async (roomId, text) => {
+	//TODO: ctx.user.id == chatUser.userId role 확인
 
 	const hashed = pwLib.createHashed(text);
 	// console.log(roomId, text, hashed);
 	const password = hashed.hashed;
 	const salt = hashed.salt;
 
-	const [cnt] = await $DB.rooms.update({ password, salt }, { where: { id: roomId } })
+	const [cnt] = await $DB.rooms.update({ password, salt }, { where: { id: roomId } });
 	return cnt == 1;
-}
+};
 
 module.exports = {
 	createRoom, getRoom, roomList,
 	createUser, getRoomMessages,
-	fileUpload, roomAuth, chagePassword
-}
+	fileUpload, roomAuth, changePassword
+};

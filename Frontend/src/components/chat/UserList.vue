@@ -95,8 +95,8 @@ export default defineComponent({
       }
     },
     myRole() {
-      // 내 역활
-      //내가 Master 이거나 Manager 이면 관리자로 한다.
+      //  내 역활
+      //  내가 Master 이거나 Manager 이면 관리자로 한다.
       const find = this.users.find((user) => user.userId == this.user.id);
       if (find) {
         return find.role;
@@ -108,7 +108,8 @@ export default defineComponent({
       return this.myRole == "Master" || this.myRole == "Manager";
     },
   },
-  methods: {},
+  methods: {
+  },
 });
 </script>
 

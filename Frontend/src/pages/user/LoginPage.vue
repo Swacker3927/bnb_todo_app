@@ -49,8 +49,6 @@
 <script>
 import { defineComponent } from "vue";
 import userApi from "src/apis/userApi";
-import { mapActions } from "pinia";
-import useUser from "stores/useUser";
 
 export default defineComponent({
   name: "LoginPage",
