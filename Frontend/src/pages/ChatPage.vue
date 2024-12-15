@@ -19,7 +19,6 @@
         >
           <template #before>
             <div v-if="curRoom" class="full-height">
-              <!-- <pre>{{ curRoom }}</pre> -->
               <MessageList
                 ref="list"
                 :room="curRoom"

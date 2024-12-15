@@ -1,6 +1,5 @@
 <template>
   <q-page padding>
-    <!-- <q-btn @click="fetchData">크롤링 시작</q-btn> -->
     <q-table
       :rows="rows"
       :columns="columns"

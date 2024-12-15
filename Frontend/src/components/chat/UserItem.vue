@@ -7,17 +7,6 @@
       <q-item-label overline>{{ user.role }}</q-item-label>
       <q-item-label>{{ user.nickName }}</q-item-label>
     </q-item-section>
-    <!-- <q-item-section v-if="useSetting" side>
-      <q-btn icon="mdi-cog" dense round flat>
-        <q-menu>
-          <q-list>
-            <q-item clickable @click="userSetting">
-              <q-item-section>{{ user.nickName }} 관리</q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
-    </q-item-section> -->
   </q-item>
 </template>
 
@@ -39,9 +28,9 @@ export default defineComponent({
     ...mapState(useUser, { me: (store) => store.user }),
     useSetting() {
       switch (this.myRole) {
-        case "Master": // 내가 마스터야 -> 나만 빼고 다~~
+        case "Master": // 내가 마스터야 → 나만 빼고 다~~
           return this.me.id != this.user.userId;
-        case "Manager": // 내가 매니저야 -> 일반유저 블럭유저 가능
+        case "Manager": // 내가 매니저야 → 일반유저, 블럭유저 가능
           return this.user.role == "User" || this.user.role == "Block";
         default:
           return false;

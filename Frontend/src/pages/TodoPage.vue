@@ -82,9 +82,6 @@ export default defineComponent({
     return {
       newTask: "",
       tasks: [
-        // { title: "Get bananas", done: false },
-        // { title: "Eat bananas", done: true },
-        // { title: "Foo bananas", done: false },
       ],
       offset: 0,
       limit: 5,

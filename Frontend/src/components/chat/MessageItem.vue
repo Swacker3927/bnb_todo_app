@@ -24,12 +24,6 @@
     :sent="message.from == sent"
     :stamp="stamp"
   >
-    <!-- <div>{{ message.id }}</div>
-    <div>{{ contents.name }}</div>
-    <div>{{ contents.size }}</div>
-    <div>{{ contents.type }}</div>
-    <div>{{ contents.path }}</div>
-    <div>{{ API_SERVER }}</div> -->
     <div><img :src="contents.thumb" style="max-height: 200px" /></div>
     <div>
       <q-btn
@@ -48,13 +42,6 @@
     :sent="message.from == sent"
     :stamp="stamp"
   >
-    <!-- <div>{{ message.id }}</div>
-    <div>{{ contents.name }}</div>
-    <div>{{ contents.size }}</div>
-    <div>{{ contents.humanSize }}</div>
-    <div>{{ contents.type }}</div>
-    <div>{{ contents.path }}</div>
-    <div>{{ API_SERVER }}</div> -->
     <div>
       <q-btn
         icon="mdi-file-download"
@@ -95,8 +82,7 @@ export default defineComponent({
     },
     contents() {
       // TODO: URL 링크
-      // 여러줄 표시
-      //
+      // 여러 줄 표시
       switch (this.message.type) {
         case "text":
           let link = this.getLink(this.message.content);
@@ -159,10 +145,7 @@ export default defineComponent({
       }
       return message;
     },
-  },
-  mounted() {
-    // console.log(this.user);
-  },
+  }
 });
 </script>
 

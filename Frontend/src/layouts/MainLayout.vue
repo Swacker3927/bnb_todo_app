@@ -82,34 +82,15 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import { date } from "quasar";
 import LogoutBtn from "src/components/LogoutBtn.vue";
 import { mapState } from "pinia";
 import useUser from "src/stores/useUser";
-// import { socket } from "boot/socket";
-// import useSocketListner from "src/composables/useSocketListner";
-// import useChat from "src/stores/useChat";
 export default defineComponent({
   name: "MainLayout",
   components: { LogoutBtn },
-  // setup() {
-  //   const chatStore = useChat();
-  //   useSocketListner(socket, {
-  //     "user:users": (users) => {
-  //       console.log("users listen", users);
-  //       chatStore.setUsers(users);
-  //     },
-  //     "user:connected": (user) => {
-  //       console.log("listen user connected", user);
-  //       chatStore.userConnected(user);
-  //     },
-  //     "user:disconnected": (userId) => {
-  //       console.log('listen user disconnected', userId)
-  //       chatStore.userDisconnected(userId);
-  //     },
-  //   });
-  // },
+
   data() {
     return {
       leftDrawerOpen: false,

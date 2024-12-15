@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, DataTypes) => {
 	const user = sequelize.define('user', {
 		id: {
@@ -8,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 			validate: {
 				customValidator(value) {
 					if (value.length < 3) {
-						throw new Error('아이디는 3글자 이상 작성해 주세요.')
+						throw new Error('아이디는 3글자 이상 작성해 주세요.');
 					}
 				}
 			}
@@ -28,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 			validate: {
 				customValidator(value) {
 					if (value.length < 2) {
-						throw new Error('이름는 2글자 이상 작성해 주세요.')
+						throw new Error('이름는 2글자 이상 작성해 주세요.');
 					}
 				}
 			}
@@ -40,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
 			validate: {
 				customValidator(value) {
 					if (value.length < 2) {
-						throw new Error('닉네임은 2글자 이상 작성해 주세요.')
+						throw new Error('닉네임은 2글자 이상 작성해 주세요.');
 					}
 				}
 			}
@@ -52,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
 				customValidator(value) {
 					const pattern = /^01[\d]-[\d]{4}-[\d]{4}$/;
 					if (!pattern.test(value)) {
-						throw new Error('휴대폰 번호 형식에 맞게 입력하세요.')
+						throw new Error('휴대폰 번호 형식에 맞게 입력하세요.');
 					}
 				}
 			}
