@@ -143,7 +143,6 @@ export default defineComponent({
     },
     roleChange(value, user) {
       // console.log(value, user);
-
       this.$q
         .dialog({
           title: "회원 역활 변경",
@@ -152,7 +151,7 @@ export default defineComponent({
         })
         .onOk(async () => {
           console.log("변경 확인!!!");
-          //TODO: 변경 할거 확인 거치고
+          //TODO: 변경 할 거 확인 거치고
           // socket 서버에 변경을 요청하고
           // roomId userId role -> DB 업데이트하고, 다른 룸에 변경 알림
           try {
@@ -172,8 +171,8 @@ export default defineComponent({
             this.$q.notify({ type: "negative", message: msg });
           }
 
-          // 변경 알림 오면 변경해주는데.
-          // 일단 Block 이 팅겨야됨!!
+          // 변경 알림 오면 변경해 주는데.
+          // 일단 Block 이 튕겨야 됨!!
         });
     },
     masterChange(user) {
@@ -209,10 +208,7 @@ export default defineComponent({
           }
         });
     },
-  },
-  mounted() {
-    // console.log(this.role, this.roleOptions);
-  },
+  }
 });
 </script>
 

@@ -28,7 +28,7 @@
 import { mapState } from "pinia";
 import { defineComponent } from "vue";
 import useUser from "stores/useUser";
-import AdmUserList from "components/chat/admin/AdmUserList.vue";
+import AdminUserList from "components/chat/admin/AdminUserList.vue";
 import chatApi from "src/apis/chatApi";
 
 export default defineComponent({
@@ -66,7 +66,7 @@ export default defineComponent({
       }
       this.$q
         .dialog({
-          component: AdmUserList,
+          component: AdminUserList,
           componentProps: {
             rows: rows,
             role: this.myRole,
@@ -117,7 +117,7 @@ export default defineComponent({
 
       this.$q
         .dialog({
-          component: AdmUserList,
+          component: AdminUserList,
           componentProps: {
             rows: rows,
             role: this.myRole,
