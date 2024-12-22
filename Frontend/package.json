@@ -1,9 +1,9 @@
 {
   "name": "todo-app",
-  "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
-  "author": "kiyong Nam <moosin76@gmail.com>",
+  "version": "1.0.0",
+  "description": "BnB Study",
+  "productName": "Todo App",
+  "author": "Taewoo Lee <sai6321@naver.com>",
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
