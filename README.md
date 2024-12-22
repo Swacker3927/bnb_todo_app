@@ -23,5 +23,5 @@ status : BOOLEAN
 true : 룸에 조인한 상태 / 가능 상태 기본값
 false : 룸에서 나간 상태
 
-rooms 에 비번 생성할때
+rooms 에 비번 생성할 때
 개설자의 salt값을 => 새로운 salt값을 만들고 저장 하는 salt 필드 추가
