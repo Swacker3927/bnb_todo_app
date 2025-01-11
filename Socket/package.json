@@ -17,5 +17,5 @@
     "sequelize": "^6.37.3",
     "socket.io": "^4.7.5"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.22"
 }
